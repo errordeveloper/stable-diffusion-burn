@@ -17,17 +17,18 @@ pub fn load_stable_diffusion<B: Backend>(
     path: &str,
     device: &B::Device,
 ) -> Result<StableDiffusion<B>, Box<dyn Error>> {
-    let n_steps = load_usize::<B>("n_steps", path, device)?;
-    let alpha_cumulative_products = load_tensor::<B, 1>("alphas_cumprod", path, device)?.into();
-    let autoencoder = load_autoencoder(&format!("{}/{}", path, "autoencoder"), device)?;
-    let diffusion = load_unet(&format!("{}/{}", path, "unet"), device)?;
-    let clip = load_clip(&format!("{}/{}", path, "clip"), device)?;
+    panic!("Not implemented")
+    // let n_steps = load_usize::<B>("n_steps", path, device)?;
+    // let alpha_cumulative_products = load_tensor::<B, 1>("alphas_cumprod", path, device)?.into();
+    // let autoencoder = load_autoencoder(&format!("{}/{}", path, "autoencoder"), device)?;
+    // let diffusion = load_unet(&format!("{}/{}", path, "unet"), device)?;
+    // let clip = load_clip(&format!("{}/{}", path, "clip"), device)?;
 
-    Ok(StableDiffusion {
-        n_steps,
-        alpha_cumulative_products,
-        autoencoder,
-        diffusion,
-        clip,
-    })
+    // Ok(StableDiffusion {
+    //     n_steps,
+    //     alpha_cumulative_products,
+    //     autoencoder,
+    //     diffusion,
+    //     clip,
+    // })
 }

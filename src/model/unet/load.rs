@@ -1,6 +1,7 @@
 use super::GroupNorm;
 use crate::model::load::*;
 
+use core::panic;
 use std::error::Error;
 
 use burn::{
@@ -65,7 +66,7 @@ pub fn load_geglu<B: Backend>(path: &str, device: &B::Device) -> Result<GEGLU<B>
 
     let geglue = GEGLU {
         proj: proj,
-        gelu: GELU::new(), // Assuming GELU::new() initializes a new GELU struct
+        gelu: Gelu::new(), // Assuming GELU::new() initializes a new GELU struct
     };
 
     Ok(geglue)
@@ -279,6 +280,8 @@ pub fn load_unet_output_blocks<B: Backend>(
 }
 
 pub fn load_unet<B: Backend>(path: &str, device: &B::Device) -> Result<UNet<B>, Box<dyn Error>> {
+    panic!("Not implemented");
+
     let lin1_time_embed = load_linear::<B>(&format!("{}/{}", path, "lin1_time_embed"), device)?;
     let silu_time_embed = SILU::new(); // Assuming SILU::new() initializes a new SILU struct
     let lin2_time_embed = load_linear::<B>(&format!("{}/{}", path, "lin2_time_embed"), device)?;

@@ -44,7 +44,8 @@ fn main() {
             let device = WgpuDevice::BestAvailable;
         } else {
             type Backend = LibTorch<f32>;
-            let device = LibTorchDevice::Cuda(0);
+            let device = LibTorchDevice::Mps;
+            println!("Using MPS device");
         }
     }
 
@@ -76,10 +77,11 @@ fn main() {
             process::exit(1);
         })
     } else {
-        load_stable_diffusion(model_name, &device).unwrap_or_else(|err| {
-            eprintln!("Error loading model dump: {}", err);
-            process::exit(1);
-        })
+        panic!("not supported")
+        // load_stable_diffusion(model_name, &device).unwrap_or_else(|err| {
+        //     eprintln!("Error loading model dump: {}", err);
+        //     process::exit(1);
+        // })
     };
 
     let sd = sd.to_device(&device);

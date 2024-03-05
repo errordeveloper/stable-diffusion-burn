@@ -9,11 +9,17 @@ edition = "2021"
 wgpu-backend = ["burn-wgpu"]
 
 [dependencies]
-burn = "0.12.1"
-burn-ndarray = "0.12.1"
-burn-tch = "0.12.1"
-burn-autodiff = "0.12.1"
-burn-wgpu = {version = "0.12.1", optional = true}
+# burn = "0.12.1"
+burn = { path = "../burn/crates/burn" }
+# burn-ndarray = "0.12.1"
+burn-ndarray = { path = "../burn/crates/burn-ndarray" }
+# burn-tch = "0.12.1"
+burn-tch = { path = "../burn/crates/burn-tch" }
+# burn-autodiff = "0.12.1"
+burn-autodiff = { path = "../burn/crates/burn-autodiff" }
+# burn-wgpu = {version = "0.12.1", optional = true}
+burn-wgpu = { path = "../burn/crates/burn-wgpu", optional = true }
+burn-fusion = { path = "../burn/crates/burn-fusion" }
 tch = "0.15.0"
 torch-sys = "0.15.0"
 serde = {version = "1.0.171", features = ["std", "derive"]}

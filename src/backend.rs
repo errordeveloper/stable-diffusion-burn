@@ -84,9 +84,11 @@ impl<E: TchElement> Backend for burn_tch::LibTorch<E> {
 
 #[cfg(feature = "wgpu-backend")]
 use burn_wgpu;
+use burn_fusion;
 
 #[cfg(feature = "wgpu-backend")]
-impl Backend for burn_wgpu::Wgpu<burn_wgpu::AutoGraphicsApi, f32, i32> {}
+impl Backend for burn_fusion::Fusion<burn_wgpu::JitBackend<burn_wgpu::compute::WgpuRuntime<burn_wgpu::AutoGraphicsApi, f32, i32>>> {} // burn_wgpu::Wgpu<burn_wgpu::AutoGraphicsApi, f32, i32> {}
+
 
 use burn_autodiff;
 
